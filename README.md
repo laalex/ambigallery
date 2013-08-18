@@ -3,10 +3,15 @@ A jQuery ambilight image gallery
 
 About: AmbiGallery jQuery image gallery is used to create interactive image gallery with the Ambilight effect ( like the Philips ambilight TV )
 
-===========
 Current version: ```0.0.1a ```
 
-===========
+-----------------
+Requirements:
+jQuery ``1.10.1``
+
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+------------------
 Usage:
 
 Target your gallery element simply with the ``$("#div")`` jQuery selector and add the ``.AmbiGallery();`` to it. From here, the plugin will take over everything and will create the nice effect for you.
