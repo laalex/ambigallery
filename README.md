@@ -1,4 +1,4 @@
-AmbiGallery : A jQuery ambilight image gallery
+A jQuery ambilight image gallery
 ===========
 
 About: AmbiGallery jQuery image gallery is used to create interactive image gallery with the Ambilight effect ( like the Philips ambilight TV )
