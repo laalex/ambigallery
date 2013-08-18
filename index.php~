@@ -1,0 +1,12 @@
+<?php
+
+//Open the com port of the usb device
+$fp = fopen('/dev/ttyUSB0','w+');
+
+var_dump($fp);
+
+
+
+
+
+?>

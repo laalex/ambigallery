@@ -1,0 +1,67 @@
+html {
+	margin:0;
+	padding:0;
+	background:#f1f1f1;
+}
+
+#container {
+	width:800px;
+	height:800px;
+	margin:50px auto;
+}
+
+
+/* AMBIGALLERY CSS */
+#ambigallery {
+	overflow:none;
+	display:block;
+	width:800px;
+	height:400px;
+	border:5px solid #ccc;
+	border-radius:5px;
+	position: relative;
+}
+
+/* AMBIGALLERY IMAGES */
+#ambigallery > img, #ambigallery > #ambilight-images-wrapper > img {
+	width:800px;
+	height:400px;
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+/* AMBIGALLERY MASKS */
+#ambigallery > #ambilight-topmask {
+	background:#ac00dc;
+	width:800px;
+	height:20px;
+	position: absolute;
+	top:-20px;
+	left:0;
+}
+
+#ambigallery > #ambilight-bottommask {
+	background: #ac00dc;
+	width:800px;
+	height:20px;
+	position: absolute;
+	bottom:-20px;
+	left:0;
+}
+
+#ambigallery > #ambilight-leftmask {
+	background: #ff0000;
+	width:20px;
+	height:400px;
+	position: absolute;
+	left:-20px;
+}
+
+#ambigallery > #ambilight-rightmask {
+	background: #ff0000;
+	width:20px;
+	height:400px;
+	position: absolute;
+	right:-20px;
+}
