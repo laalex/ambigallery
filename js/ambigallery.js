@@ -41,6 +41,9 @@
 		if(settings.leftmask){this.append('<div id="ambilight-leftmask"></div>');}
 		if(settings.rightmask){this.append('<div id="ambilight-rightmask"></div>');}
 
+		//Append the canvas processor
+		this.append('<canvas style="display:none" id="ambilight-canvas-processor"></canvas>');
+
 		//Get the gallery length
 		galleryLength = imageChildrens.length;
 
@@ -71,14 +74,30 @@
 			if(counter == galleryLength){ counter = 0; }
 
 			//Run the gallery
-			ambilightGallery(currentImage,imageChildrens,counter,settings.speed,settings.fadeSpeed);
+			changeImages(currentImage,imageChildrens,counter,settings.speed,settings.fadeSpeed);
 
 		},settings.speed);
 
-		function ambilightGallery(current,images,item,delay,fadeSpeed){
+		//This function swaps the images
+		function changeImages(current,images,item,delay,fadeSpeed){
+			//Process the ambilight sequence
+			processAmbilight(images[item]);
 			//Fade out the current element
 			$(current).fadeOut(fadeSpeed);
 			$(images[item]).fadeIn(fadeSpeed);
+		}
+
+		//Process the ambilight sequence for current image
+		function processAmbilight(image){
+			//We have the image object -> Put it into the canvas element and get the details.
+			var canvas = document.getElementById('ambilight-canvas-processor');
+			var context = canvas.getContext('2d');
+			var imgObject = new Image();
+		    imgObject.onload = function() {
+		        context.drawImage(imgObject, 0, 0);
+		    };
+		    imgObject.src = $(image).attr('src');
+			
 		}
 
 	}

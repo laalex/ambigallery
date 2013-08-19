@@ -33,7 +33,7 @@ html {
 
 /* AMBIGALLERY MASKS */
 #ambigallery > #ambilight-topmask {
-	background:#ac00dc;
+	
 	width:800px;
 	height:20px;
 	position: absolute;
@@ -42,7 +42,7 @@ html {
 }
 
 #ambigallery > #ambilight-bottommask {
-	background: #ac00dc;
+	
 	width:800px;
 	height:20px;
 	position: absolute;
@@ -51,7 +51,7 @@ html {
 }
 
 #ambigallery > #ambilight-leftmask {
-	background: #ff0000;
+	
 	width:20px;
 	height:400px;
 	position: absolute;
@@ -59,7 +59,7 @@ html {
 }
 
 #ambigallery > #ambilight-rightmask {
-	background: #ff0000;
+	
 	width:20px;
 	height:400px;
 	position: absolute;
