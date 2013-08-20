@@ -20,10 +20,11 @@
 			speed: 3000, //Gallery Transaction Speed
 			debug: false,
 			fadeSpeed: 1000,
-			topmask:true,
-			bottommask:true,
-			leftmask:true,
-			rightmask:true
+			topmask:false,
+			bottommask:false,
+			leftmask:false,
+			rightmask:false,
+			strength: .7
 		} , options);
 
 		
@@ -41,8 +42,11 @@
 		if(settings.leftmask){this.append('<div id="ambilight-leftmask"></div>');}
 		if(settings.rightmask){this.append('<div id="ambilight-rightmask"></div>');}
 
+		this.append('<canvas id="ambilight-bgdmask"></canvas>');
+
+
 		//Append the canvas processor
-		this.append('<canvas style="display:none" id="ambilight-canvas-processor"></canvas>');
+		this.append('<canvas style="display:none;width:800px;height:400px;position:absolute;top:420px;left:0;" id="ambilight-canvas-processor"></canvas>');
 
 		//Get the gallery length
 		galleryLength = imageChildrens.length;
@@ -53,6 +57,7 @@
 		//Iterate trough the images and show only the first one
 		//First check if the gallery length is more than 0;
 		if(galleryLength >=1){
+			processAmbilight(imageChildrens[0]);
 			//Iterate trough the array and hide the gallery images, without the first one
 			for(i=1;i<galleryLength;i++){
 				$(imageChildrens[i]).hide();
@@ -89,14 +94,55 @@
 
 		//Process the ambilight sequence for current image
 		function processAmbilight(image){
+
 			//We have the image object -> Put it into the canvas element and get the details.
 			var canvas = document.getElementById('ambilight-canvas-processor');
 			var context = canvas.getContext('2d');
 			var imgObject = new Image();
 		    imgObject.onload = function() {
-		        context.drawImage(imgObject, 0, 0);
+		        context.drawImage(imgObject, 0, 0,800,400,0,0,800,400);
 		    };
 		    imgObject.src = $(image).attr('src');
+
+		    //Wait for the image to be loaded to canvas
+		    setTimeout(function(){
+		    	//Image was added to the canvas element -> Get image data
+			    imgData = context.getImageData(100,100,1,1);
+			    imgData = imgData.data;
+			    //We have the colors, fill the mask
+			    var cvs = document.getElementById('ambilight-bgdmask');
+			    var ctx = cvs.getContext('2d');
+
+			    //Create the background ambilight effect
+			    var img = new Image();
+			    img.onload = function(){
+			    	var w = img.width;
+			    	var h = img.height;
+			    	cvs.width = w;
+			    	cvs.height = h;
+			    	//Draw the mask
+			    	ctx.drawImage(img,0,0,w,h);
+			    	//Cange composite
+			    	ctx.globalCompositeOperation = 'source-in';
+			    	//Set the ambilight strength
+			    	ctx.globalAlpha = settings.strength;
+			    	//Create the gradient that get's us the ambilight effect
+					var gradient = ctx.createLinearGradient(0,0,1200,800);
+					//Add gradient stops
+					gradient.addColorStop(0, 'rgb('+imgData[0]+','+imgData[1]+','+imgData[2]+')');
+					//Set the fill style to gradient
+					ctx.fillStyle = gradient;
+					//Fill the entire mask
+					ctx.fillRect(0, 0, 1200, 800);
+
+			    };
+			    img.src = 'css/mask2.png';
+
+
+				console.log('rgb('+imgData[0]+','+imgData[1]+','+imgData[2]+',.5)');
+
+		    },75);
+		    
 			
 		}
 
