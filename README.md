@@ -3,7 +3,7 @@ A jQuery ambilight image gallery
 
 About: AmbiGallery jQuery image gallery is used to create interactive image gallery with the Ambilight effect ( like the Philips ambilight TV )
 
-Current version: ```0.0.1a ```
+Current version: ```0.1.0a ```
 
 -----------------
 Requirements:
@@ -27,7 +27,7 @@ AmbiGallery current options ( with their default values ) :
 - ``bottommask:true``- Show bottom Ambilgiht effect
 - ``leftmask:true``- Show leftside Ambilgiht effect
 - ``rightmask:true``- Show rightside Ambilgiht effect
-
+- ``strength:.7``- The strength of the ambilight effect applied on the background mask
 
 ----------
 Examples
@@ -54,8 +54,6 @@ If you want to set options to this, you can simply add them like this:
 ----------------
 TO DO LIST
 ----------------
-+ Change image element to canvas
-+ Create the photoshop masks
-+ Add the proper gradient to the masks
+
 + Check browser versions compatibility
 + Drink a beer.
