@@ -54,10 +54,6 @@ If you want to set options to this, you can simply add them like this:
 ----------------
 TO DO LIST
 ----------------
-+ Split the mask into 4 masks
-+ Create an option to let the user select how many colors the gradient should have
-+ Add the gradient to the 4 masks
-+ Add settings for the gallery like: pause on hover, control buttons, etc.
-+ Add option to use only 1 mask and use the blurred version of the image instead of using the gradient fill for the mask
+
 + Check browser versions compatibility
 + Drink a beer.
